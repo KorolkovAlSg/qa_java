@@ -7,7 +7,7 @@ public class Lion {
     boolean hasMane;
     Specimen specimen;
 
-    public Lion(String sex, Specimen specimen) throws Exception {
+    public Lion(String sex) throws Exception {
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -15,7 +15,9 @@ public class Lion {
         } else {
             throw new Exception("Используйте допустимые значения пола животного - Самец или Самка");
         }
+    }
 
+    public Lion(Specimen specimen){
         this.specimen = specimen;
     }
 

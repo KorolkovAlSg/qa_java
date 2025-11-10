@@ -17,12 +17,12 @@ public class CatTest {
     private Cat cat = new Cat(feline);
 
     @Test
-    public void getSoundCallOneTimeReturnString() {
+    public void getSoundInvokeOneTimeReturnString() {
         Assert.assertEquals("Метод должен вернуть - Мяу", "Мяу", cat.getSound());
     }
 
     @Test
-    public void getFoodCallReturnFelineGetFood() throws Exception {
+    public void getFoodInvokeOneTimeReturnList() throws Exception {
         Assert.assertEquals("Метод должен вернуть список - \"Животные\", \"Птицы\", \"Рыба\"", List.of("Животные", "Птицы", "Рыба"), cat.getFood());
     }
 
