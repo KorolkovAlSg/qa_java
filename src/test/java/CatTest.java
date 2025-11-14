@@ -1,28 +1,28 @@
 import com.example.Cat;
 import com.example.Feline;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-@RunWith(MockitoJUnitRunner.class)
 public class CatTest {
 
-    private Feline feline = new Feline();
+    private Cat cat;
 
-    @Spy
-    private Cat cat = new Cat(feline);
+    @Before
+    public void setVar(){
+        Feline feline = new Feline();
+        cat = new Cat(feline);
+    }
 
     @Test
-    public void getSoundInvokeOneTimeReturnString() {
+    public void getSoundInvokeReturnString() {
         Assert.assertEquals("Метод должен вернуть - Мяу", "Мяу", cat.getSound());
     }
 
     @Test
-    public void getFoodInvokeOneTimeReturnList() throws Exception {
+    public void getFoodInvokeReturnList() throws Exception {
         Assert.assertEquals("Метод должен вернуть список - \"Животные\", \"Птицы\", \"Рыба\"", List.of("Животные", "Птицы", "Рыба"), cat.getFood());
     }
 

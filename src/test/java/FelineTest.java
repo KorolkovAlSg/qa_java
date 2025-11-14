@@ -1,16 +1,32 @@
 import com.example.Feline;
+import com.example.Predator;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.List;
+
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
 
-    @Spy
     private Feline feline;
+
+    @Spy
+    private Feline felineSpy = new Feline();
+
+    @Before
+    public void setVar(){
+        feline = new Feline();
+    }
+
+    @Test
+    public void eatMeatInvokeOneTimeReturnList() throws Exception {
+        Assert.assertEquals("Метод должен вернуть список - \"Животные\", \"Птицы\", \"Рыба\"", List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());
+    }
 
     @Test
     public void getFamilyInvokeOneTimeReturnString(){
@@ -23,10 +39,10 @@ public class FelineTest {
     }
 
     @Test
-    public void getKittensNoParamInvokeGetKittensWith1(){
-        Assert.assertEquals("Метод должен вернуть - 1", 1, feline.getKittens());
-
-        // проверь, что внутри ровно один раз вызвался метод getKittens(int kittensCount)
-        Mockito.verify(feline, Mockito.times(1)).getKittens(1);
+    public void getKittensNoParamInvokeSetKittensWith1(){
+        felineSpy.getKittens();
+        Mockito.verify(felineSpy, Mockito.times(1)).getKittens(1);
     }
+
+
 }
